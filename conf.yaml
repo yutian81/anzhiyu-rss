@@ -57,10 +57,6 @@ smtp:
 #   name:               友链名称
 #   url:                指定的RSS地址
 specific_RSS:
-  - name: "吾爱破解"
-    url: "https://www.52pojie.cn/forum.php?mod=rss"
-  - name: "卡饭论坛"
-    url: "https://bbs.kafan.cn/forum.php?mod=rss"
   - name: "远景论坛"
     url: "https://bbs.pcbeta.com/forum.php?mod=rss"
   - name: "异星软件"
