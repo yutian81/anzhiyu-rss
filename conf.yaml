@@ -53,6 +53,7 @@ smtp:
 
 # 特殊RSS地址指定
 # 解释：用于指定特殊RSS地址，如B站专栏等不常见RSS地址后缀，可以添加多个
+# name必须和friend.json中的name完全相同
 #   name:               友链名称
 #   url:                指定的RSS地址
 specific_RSS:
