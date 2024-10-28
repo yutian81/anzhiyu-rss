@@ -8,11 +8,11 @@
 #     marge_json_path:  请填写网络地址的json文件，用于合并，不带空格！！！
 spider_settings:
   enable: true
-  json_url: "https://blog.liushen.fun/friend.json"
+  json_url: "https://fastly.jsdelivr.net/gh/yutian81/anzhiyu-rss@main/friend.json"
   article_count: 5
   merge_result:
     enable: false
-    merge_json_url: "https://fc.liushen.fun"
+    merge_json_url: "https://anzhiyu-rss.pages.dev"
 
 # 邮箱推送功能配置，暂未实现，等待后续开发
 # 解释：每天为指定邮箱推送所有友链文章的更新，仅能指定一个
@@ -32,16 +32,12 @@ email_push:
 #   github_username:    GitHub 用户名，用于构建issue api地址
 #   github_repo:        GitHub 仓库名，用于构建issue api地址
 #   your_blog_url:      你的博客地址
-#   website_info:       你的博客信息
-#     title:            你的博客标题，如果启用了推送，用于生成邮件主题
 rss_subscribe:
-  enable: true
-  github_username: willow-god
-  github_repo: Friend-Circle-Lite
-  your_blog_url: https://blog.liushen.fun/
+  enable: false
+  github_username: yutian81
+  github_repo: anzhiyu-rss
+  your_blog_url: https://blog.811520.xyz/
   email_template: "./rss_subscribe/email_template.html"
-  website_info:
-    title: "清羽飞扬"
 
 # SMTP 配置
 # 解释：使用其中的相关配置实现上面两种功能，若无推送要求可以不配置，请将以上两个配置置为false
@@ -50,17 +46,26 @@ rss_subscribe:
 #   port：              SMTP 端口号
 #   use_tls：           是否使用 tls 加密
 smtp:
-  email: 3162475700@qq.com
-  server: smtp.qq.com
-  port: 587
+  email: postmaster@811520.xyz
+  server: smtp.qiye.aliyun.com
+  port: 465
   use_tls: true
 
-# 特殊RSS地址指定，可以置空但是不要删除！
+# 特殊RSS地址指定
 # 解释：用于指定特殊RSS地址，如B站专栏等不常见RSS地址后缀，可以添加多个
+# name必须和friend.json中的name完全相同
 #   name:               友链名称
 #   url:                指定的RSS地址
 specific_RSS:
-  # - name: "Redish101"
-  #   url: "https://reblog.redish101.top/api/feed"
-  # - name: "無名小栈"
-  #   url: "https://blog.imsyy.top/rss.xml"
+  - name: "無名小栈"
+    url: "https://blog.imsyy.top/rss.xml"
+  - name: "远景论坛"
+    url: "https://bbs.pcbeta.com/forum.php?mod=rss"
+  - name: "异星软件"
+    url: "https://www.yxssp.com/feed"
+  - name: "克隆窝"
+    url: "https://www.uy5.net/feed"
+  - name: "蓝鲨应用库"
+    url: "https://www.lsapk.com/feed"
+  - name: "LINUX DO论坛"
+    url: "https://linux.do/c/resource/14.rss"
