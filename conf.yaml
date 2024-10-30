@@ -71,3 +71,5 @@ specific_RSS:
     url: "https://www.lsapk.com/feed"
   - name: "LINUX DO论坛"
     url: "https://linux.do/c/resource/14.rss"
+  - name: "Dejavu's Blog"
+    url: "https://blog.dejavu.moe/index.xml"
