@@ -1,5 +1,5 @@
 # 引入 check_feed 和 parse_feed 函数
-from friend_circle_lite.get_info import fetch_and_process_data, sort_articles_by_time, marge_data_from_json_url, marge_errors_from_json_url
+from friend_circle_lite.get_info import fetch_and_process_data, sort_articles_by_time, marge_data_from_json_url, marge_errors_from_json_url, deal_with_large_data
 from friend_circle_lite.get_conf import load_config
 from rss_subscribe.push_article_update import get_latest_articles_from_link, extract_emails_from_issues
 from push_rss_update.send_email import send_emails
@@ -22,10 +22,10 @@ if config["spider_settings"]["enable"]:
         print("合并数据功能开启，从 {marge_json_url} 中获取境外数据并合并".format(marge_json_url=marge_json_url + "/all.json"))
         result = marge_data_from_json_url(result, marge_json_url + "/all.json")
         lost_friends = marge_errors_from_json_url(lost_friends, marge_json_url + "/errors.json")
-        
-    sorted_result = sort_articles_by_time(result)
+    result = deal_with_large_data(result)
+
     with open("all.json", "w", encoding="utf-8") as f:
-        json.dump(sorted_result, f, ensure_ascii=False, indent=2)
+        json.dump(result, f, ensure_ascii=False, indent=2)
     with open("errors.json", "w", encoding="utf-8") as f:
         json.dump(lost_friends, f, ensure_ascii=False, indent=2)
 
@@ -45,8 +45,20 @@ if config["email_push"]["enable"]:
 if config["rss_subscribe"]["enable"]:
     print("RSS通过issue订阅已启用")
     # 获取并强制转换为字符串
-    github_username = str(config["rss_subscribe"]["github_username"]).strip()
-    github_repo = str(config["rss_subscribe"]["github_repo"]).strip()
+    # 尝试从环境变量获取 FCL_REPO
+    fcl_repo = os.getenv('FCL_REPO')
+
+    # 提取 github_username 和 github_repo
+    if fcl_repo:
+        github_username, github_repo = fcl_repo.split('/')
+        print(f"从环境变量获取到的 GitHub Username: {github_username}")
+        print(f"从环境变量获取到的 GitHub Repo: {github_repo}")
+    else:
+        github_username = str(config["rss_subscribe"]["github_username"]).strip()
+        github_repo = str(config["rss_subscribe"]["github_repo"]).strip()
+        print(f"从配置文件获取到的 GitHub Username: {github_username}")
+        print(f"从配置文件获取到的 GitHub Repo: {github_repo}")
+    
     your_blog_url = config["rss_subscribe"]["your_blog_url"]
     email_template = config["rss_subscribe"]["email_template"]
     # 获取网站信息
