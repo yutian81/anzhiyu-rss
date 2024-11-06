@@ -59,8 +59,6 @@ smtp:
 specific_RSS:
   - name: "無名小栈"
     url: "https://blog.imsyy.top/rss.xml"
-  - name: "RSSHub-Radar"
-    url: "https://github.com/DIYgod/RSSHub-Radar/releases.atom"
   - name: "远景论坛"
     url: "https://bbs.pcbeta.com/forum.php?mod=rss"
   - name: "异星软件"
