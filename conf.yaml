@@ -11,7 +11,7 @@ spider_settings:
   json_url: "https://blog.811520.xyz/friend.json"
   article_count: 5
   merge_result:
-    enable: false
+    enable: true
     merge_json_url: "https://gist.githubusercontent.com/yutian81/42469c99d5e57fc676f9b82f0a8ce3eb/raw/friend.json"
 
 # 邮箱推送功能配置，暂未实现，等待后续开发
