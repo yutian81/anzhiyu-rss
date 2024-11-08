@@ -59,6 +59,8 @@ smtp:
 specific_RSS:
   - name: "無名小栈"
     url: "https://blog.imsyy.top/rss.xml"
+  - name: "Dejavu's Blog"
+    url: "https://blog.dejavu.moe/index.xml"
   - name: "远景论坛"
     url: "https://bbs.pcbeta.com/forum.php?mod=rss"
   - name: "异星软件"
@@ -69,5 +71,3 @@ specific_RSS:
     url: "https://www.lsapk.com/feed"
   - name: "LINUX DO论坛"
     url: "https://linux.do/c/resource/14.rss"
-  - name: "Dejavu's Blog"
-    url: "https://blog.dejavu.moe/index.xml"
